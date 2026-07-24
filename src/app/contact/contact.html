@@ -1,0 +1,83 @@
+<!-- <h1 class="text-center text-success mt-4">WELCOME TO THE CONTACT PAGE</h1> -->
+<div class="container col-4">
+    <div class="row justify-content-center align-items-center ">
+        <form (ngSubmit)="saveData()" class="border border-info mb-lg-1 bg-body rounded-3  p-4 shadow-sm mt-5">
+            <div class="form-group">
+                <label for="fullname">FullName:</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-person-fill"></i>
+                    </span>
+                    <input type="text" class="form-control" name="fullname" [(ngModel)]="contact.fullname"
+                        placeholder="Enter your fullname">
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-envelope"></i>
+                    </span>
+                    <input type="email" class="form-control" name="email" [(ngModel)]="contact.email"
+                        placeholder="Enter your email">
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-telephone"></i>
+                    </span>
+                    <input type="text" class="form-control" name="phone" [(ngModel)]="contact.phone"
+                        placeholder="Enter your phone number">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-chat"></i>
+                    </span>
+                    <textarea class="form-control" name="message" [(ngModel)]="contact.message"
+                        placeholder="Enter your message"></textarea>
+                </div>
+            </div>
+            <div class="form-qroup mt-3 ">
+               
+                <button type="submit" class="btn btn-primary p-2">  <i class="bi bi-truck me-2 h5"></i> {{editindex===-1 ? 'Send To' : 'Update Contact'}}</button>
+              
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Result -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4 mb-3" *ngFor="let item of contacts; let i=index">
+            <div class="card border-success shadow-sm">
+                <div class="card-body">
+                    <h3 class="text-success mb-4">
+                        {{ item.fullname }}
+                    </h3> 
+                    <p><i class="bi bi-envelope-check h4 me-3 text-info"></i> {{ item.email }}</p>
+                    <p><i class="bi bi-phone me-3 h4 text-danger"></i> {{ item.phone }}</p>
+                    <p><i class="bi bi-chat-quote me-3 h4 text-warning"></i> {{ item.message }}</p>
+                </div>
+                <div class="card-footer bg-white d-flex justify-content-between">
+                    <button class="btn btn-outline-success"
+                    (click)="editContact(i)">
+                        <i class="bi bi-pencil-square"></i>
+                        Edit
+                    </button>
+                    <button class="btn btn-outline-danger"
+                    (click)="deleteContact(i)">
+                        <i class="bi bi-trash3"></i>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
